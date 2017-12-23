@@ -16,8 +16,7 @@
   "bugs": {
     "url": "https://github.com/psenger/BreakingPixelsWithUnicorns/issues"
   },
-  "homepage": "https://github.com/psenger/BreakingPixelsWithUnicorns#readme"
-
+  "homepage": "https://github.com/psenger/BreakingPixelsWithUnicorns#readme",
   "scripts": {
     "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
