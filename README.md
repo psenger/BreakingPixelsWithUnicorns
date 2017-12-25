@@ -10,9 +10,11 @@ The eventual goal of this project, is to lower the resolution and color depth of
 ## Examples:
 
 For example, the following image of a running fox.
+
 ![Running Fox](https://psenger.github.io/BreakingPixelsWithUnicorns/images/RunningFox.png)
 
 Will turn into a webpage that looks like the following:
+
 ![Running Fox](https://psenger.github.io/BreakingPixelsWithUnicorns/images/ScreenShot.png)
 
 ## Running:
