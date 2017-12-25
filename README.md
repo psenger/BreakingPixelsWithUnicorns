@@ -1,4 +1,3 @@
-# Breaking Pixels With Unicorns
 
 "Breaking pixels with unicorns" is a simple web app ( NodeJS with Express ) that will reads an image ( JPEG or PNG ) from a directory in the project and produce a pixelated image with HTML ```divs``` tags. 
 
@@ -12,6 +11,7 @@ The eventual goal of this project, is to lower the resolution and color depth of
 
 For example, the following image of a running fox.
 ![Running Fox](https://psenger.github.io/BreakingPixelsWithUnicorns/images/RunningFox.png)
+
 Will turn into a webpage that looks like the following:
 ![Running Fox](https://psenger.github.io/BreakingPixelsWithUnicorns/images/ScreenShot.png)
 
