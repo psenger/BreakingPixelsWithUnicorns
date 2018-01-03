@@ -3,6 +3,7 @@ const express = require('express'),
     path = require('path'),
     jimp = require("jimp"),
     tmp = require('tmp'),
+    quantize = require('quantize'),
     Promise = require('bluebird');
 
 const getPixels = Promise.promisify(require("get-pixels"));
@@ -64,16 +65,30 @@ router.get('/', (req, res, next) => {
         // nz is the number of color indexes, I looked in the code, and it looks like gif, bmp, jpeg, and png is always 4
 
         let pixelHtml = '';
-        let colorCodes = {};
-        let colorCount = 1;
+        // let colorCodes = {};
+        // let colorCount = 1;
 
+        let arrayOfPixels = [];
         for (let y = 0; y < ny; y++) {
-            pixelHtml += '<div class="row">';
             for (let x = 0; x < nx; x++) {
                 let red = pixels.get(x, y, 0);
                 let green = pixels.get(x, y, 1);
                 let blue = pixels.get(x, y, 2);
-                let opacity = (pixels.get(x, y, 3) / 255);
+                arrayOfPixels.push([red,green,blue]);
+            }
+        }
+        let maximumColorCount = 16;
+        let cmap = quantize(arrayOfPixels, maximumColorCount);
+
+        for (let y = 0; y < ny; y++) {
+            pixelHtml += '<div class="row">';
+            for (let x = 0; x < nx; x++) {
+                // let red = pixels.get(x, y, 0);
+                // let green = pixels.get(x, y, 1);
+                // let blue = pixels.get(x, y, 2);
+                // let opacity = (pixels.get(x, y, 3) / 255);
+
+                let [red,green,blue]= cmap.map([pixels.get(x, y, 0),pixels.get(x, y, 1),pixels.get(x, y, 2)]);
 
                 // let { colorCode, button } = (colorCodes[`${red}${green}${blue}`])?colorCodes[`${red}${green}${blue}`]:{colorCode:null,button:null};
                 //
@@ -90,7 +105,7 @@ router.get('/', (req, res, next) => {
                 // }
                 // pixelHtml += `<div>${cc}</div>`;
 
-                pixelHtml += `<div style=\"background-color: rgba(${red}, ${green}, ${blue}, ${opacity});\"></div>`;
+                pixelHtml += `<div style=\"background-color: rgb( ${red}, ${green}, ${blue} );\"></div>`;
             }
             pixelHtml += '</div>';
         }
@@ -108,9 +123,9 @@ router.get('/', (req, res, next) => {
         let containerHeight = ny * ( ( margin * 2  ) + ( border * 2 ) + divHeight);
 
         let colorButtons = '';
-        for(let prop in colorCodes) {
-            colorButtons += colorCodes[prop].button;
-        }
+        // for(let prop in colorCodes) {
+        //     colorButtons += colorCodes[prop].button;
+        // }
 
         res.render('index', { title: 'Express', pixelHtml, containerWidth, containerHeight, colorButtons, divHeight, divWidth } );
 

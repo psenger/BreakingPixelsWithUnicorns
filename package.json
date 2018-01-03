@@ -32,6 +32,8 @@
     "jimp": "^0.2.28",
     "morgan": "~1.9.0",
     "node-sass-middleware": "0.9.8",
+    "quantize": "^1.0.2",
+    "rgbquant": "^1.1.2",
     "serve-favicon": "~2.4.5",
     "tmp": "0.0.33"
   }
