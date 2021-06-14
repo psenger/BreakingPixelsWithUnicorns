@@ -21,6 +21,11 @@
     "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engineStrict": true,
+  "engines": {
+    "node": ">=15.0.0",
+    "npm": ">=7.0.0"
+  },
   "dependencies": {
     "bluebird": "^3.7.2",
     "body-parser": "^1.18.3",
@@ -31,7 +36,6 @@
     "hbs": "^4.1.2",
     "jimp": "^0.16.1",
     "morgan": "^1.10.0",
-    "node-sass-middleware": "^0.11.0",
     "quantize": "^1.0.2",
     "rgbquant": "^1.1.2",
     "serve-favicon": "~2.4.5",
